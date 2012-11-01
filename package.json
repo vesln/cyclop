@@ -1,0 +1,26 @@
+{
+  "name": "cyclop",
+  "version": "0.0.0",
+  "description": "",
+  "main": "./index.js",
+  "homepage": "https://github.com/vesln/cyclop",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vesln/cyclop"
+  },
+  "keywords": ["control flow"],
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "*",
+    "folio": "*",
+    "chai": "*"
+  },
+  "author": "Veselin Todorov <hi@vesln.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">= 0.6.0"
+  }
+}
