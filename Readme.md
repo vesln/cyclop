@@ -7,6 +7,8 @@ only one thing, but it does it well. Simplicity is the key to brilliance.
 
 ## Synopsis
 
+### Simple
+
 ```js
 cyclop()
   .push(function(next) {
@@ -27,6 +29,36 @@ cyclop()
 
   });
 ```
+
+### Readable
+
+```js
+var queue = cyclop();
+
+queue.step('Create project', function(next) {
+  next('Project');
+});
+
+queue.step('Create user', function(next, project) {
+  next(project, 'User');
+});
+
+queue.step('Add associations', function(next, project, user) {
+  next(project, user, 'Associations');
+});
+
+queue
+  .step('Create project')
+  .step('Create user')
+  .step('Add associations')
+  .end(function(project, user, associations) {
+    console.log(project); // => 'Project'
+    console.log(user); // => 'User'
+    console.log(associations); // => 'Associations'
+  });
+
+```
+
 
 ## Installation
 

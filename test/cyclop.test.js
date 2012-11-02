@@ -29,4 +29,25 @@ describe('cyclop', function() {
         done();
       });
   });
+
+  it('can register and run steps', function(done) {
+    var run = cyclop();
+
+    run.step('Create project', function(next) {
+      next('Project');
+    });
+
+    run.step('Create user', function(next, project) {
+      next(project, 'User');
+    });
+
+    run
+      .step('Create project')
+      .step('Create user')
+      .end(function(project, user) {
+        project.should.eq('Project')
+        user.should.eq('User')
+        done();
+      });
+  });
 });
