@@ -70,6 +70,7 @@
 
       function Cyclop() {
         this.batch = [];
+        this.steps = {};
       };
 
       /**
@@ -91,9 +92,24 @@
        * @api public
        */
 
+      Cyclop.prototype.end =
       Cyclop.prototype.run = function(fn) {
         if (fn) this.push(fn);
         this.cycle();
+      };
+
+      /**
+       * Register or add to the queue a named step.
+       *
+       * @param {String} step
+       * @param {Function} callback [optional]
+       * @api public
+       */
+
+      Cyclop.prototype.step = function(step, fn) {
+        if (fn) this.steps[step] = fn;
+        else this.push(this.steps[step]);
+        return this;
       };
 
       /**
